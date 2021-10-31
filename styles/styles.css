@@ -1,0 +1,30 @@
+html {
+    background-color: #fdf6e3;
+}
+
+code {
+    background-color: #eee8d5;
+}
+
+dl {
+    list-style-type: '▶';
+}
+
+.hidden {
+    display: none;
+}
+
+.question {
+    cursor: pointer;
+}
+
+.question::before {
+    content: "▶";
+}
+
+.expanded::before {
+    content: "▼";
+}
+
+.answer {
+}
