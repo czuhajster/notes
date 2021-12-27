@@ -1,4 +1,5 @@
 #!/usr/bin/env runhaskell
+{-# LANGUAGE OverloadedStrings #-}
 -- expand.hs
 
 import Text.Pandoc.JSON
@@ -14,9 +15,9 @@ expand xs        = xs
 expand' :: [Inline] -> [Inline]
 expand' [] = []
 expand' ((Str y):ys)
- | unpack y == ";;Q" = Str (pack "Expanded ;;Q") : expand' ys
- | unpack y == ";;QE" = Str (pack "Expanded ;;QE") : expand' ys
- | unpack y == ";;A" = Str (pack "Expanded ;;A") : expand' ys
- | unpack y == ";;AE" = Str (pack "Expanded ;;AE") : expand' ys
+ | y == ";;Q" = Str ("Expanded ;;Q") : expand' ys
+ | y == ";;QE" = Str ("Expanded ;;QE") : expand' ys
+ | y == ";;A" = Str ("Expanded ;;A") : expand' ys
+ | y == ";;AE" = Str ("Expanded ;;AE") : expand' ys
  | otherwise = Str y : expand' ys
 expand' (y:ys) = y : expand' ys
